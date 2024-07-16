@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\type;
 use Illuminate\Http\Request as HttpRequest;
 
 class ProjectController extends Controller
@@ -14,12 +15,16 @@ class ProjectController extends Controller
     public function index()
     {
         $progetti = Project::all();
-
+        $type = type::all();
+        // $type = type::all()->keyBy('id');
+        
         $data = [
-            "progetti" => $progetti
+            "progetti" => $progetti,
+            "types" => $type,
         ];
-
+        
         return view('admin.projects.index', $data);
+        // dd( $prova,$progetti);
     }
 
     /**

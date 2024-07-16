@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\type;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class TypeController extends Controller
@@ -35,7 +36,14 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newType = new type();
+        $newType->name = $data['name'];
+        $newType->icon = $data['icon'];
+        $newType->save();
+
+        return redirect()->route('admin.types.show', $newType->id);
     }
 
     /**
@@ -44,7 +52,7 @@ class TypeController extends Controller
     public function show(type $type)
     {
         $data = [
-            "types" => $type
+            "types" => $type,
         ];
 
         return view('admin.types.show', $data);
@@ -55,7 +63,11 @@ class TypeController extends Controller
      */
     public function edit(type $type)
     {
-        return view('admin.types.edit');
+        $data = [
+            "types" => $type
+        ];
+
+        return view("admin.types.edit", $data);
     }
 
     /**
@@ -63,7 +75,15 @@ class TypeController extends Controller
      */
     public function update(Request $request, type $type)
     {
-        //
+        $data = $request->all();
+
+
+        $type->name = $data['name'];
+        $type->icon = $data['icon'];
+       
+        $type->save();
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -71,6 +91,8 @@ class TypeController extends Controller
      */
     public function destroy(type $type)
     {
-        //
+        $type->delete();
+
+        return redirect()->route('admin.types.index');
     }
 }

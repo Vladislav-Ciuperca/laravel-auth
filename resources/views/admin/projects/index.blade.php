@@ -17,6 +17,10 @@
 
                                 <h5 class="card-title">{{ $progetto->titolo }}</h5>
                                 <p class="descrizone card-text overflow-auto">{{ $progetto->descrizione }}</p>
+                                <p class="descrizone card-text overflow-auto">{{ $progetto->type_id }}</p>
+                                {{-- <h1>{{ $types[{{$progetto->type_id}}]["name"] }}</h1> --}}
+                                {{-- <h1>{{ $types[$progetto->type_id]->name }}</h1> --}}
+
                             </div>
 
                             <div class="my-3 d-flex flex-column">

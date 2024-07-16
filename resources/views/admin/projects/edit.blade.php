@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Aggiungi un Progetto</h1>
+                <h1>Modifica il Progetto</h1>
             </div>
         </div>
 
