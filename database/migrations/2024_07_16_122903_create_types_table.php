@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use function PHPSTORM_META\type;
+
 return new class extends Migration
 {
     /**
@@ -14,6 +16,7 @@ return new class extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->id();
             
+            // $table->id('type_id');
             $table->string('name');
             $table->string('icon');
 

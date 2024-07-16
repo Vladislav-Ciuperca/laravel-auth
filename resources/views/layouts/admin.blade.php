@@ -45,6 +45,15 @@
                                 </a>
                             </li>
 
+                            {{-- ////////////////////// --}}
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.types.index') }}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Types
+                                </a>
+                            </li>
+                            {{-- ////////////////////// --}}
+
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -59,7 +68,7 @@
 
                     </div>
                 </nav>
-
+ 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     @yield('content')
                 </main>
