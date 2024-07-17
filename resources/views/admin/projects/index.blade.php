@@ -17,9 +17,11 @@
 
                                 <h5 class="card-title">{{ $progetto->titolo }}</h5>
                                 <p class="descrizone card-text overflow-auto">{{ $progetto->descrizione }}</p>
-                                <p class="descrizone card-text overflow-auto">{{ $progetto->type_id }}</p>
                                 {{-- con le funzioni "belongs to" e "has many" il type ha un id a qui appogiarsi --}}
-                                <p class="descrizone card-text overflow-auto">{{ $progetto->type->name }}</p>
+                                <span class="descrizone card-text overflow-auto">{{ $progetto->type->name }}</span>
+                             @foreach ($progetto->tecnologies as $tecnology)
+                            <h2>{{$tecnology->name}}</h2>
+                             @endforeach
 
                             </div>
 
