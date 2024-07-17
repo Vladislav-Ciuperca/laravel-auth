@@ -16,6 +16,7 @@ class ProjectController extends Controller
     {
         $progetti = Project::all();
         $type = type::all();
+        
         // $type = type::all()->keyBy('id');
         
         $data = [
