@@ -16,14 +16,16 @@ class ProjectController extends Controller
     public function index()
     {
         $progetti = Project::all();
-        $type = type::all();
+        // $type = type::all();
+
+        // dd($type);
        
         
         // $type = type::all()->keyBy('id');
         
         $data = [
             "progetti" => $progetti,
-            "types" => $type,
+            // "types" => $type,
         ];
 
         // dd($tecnology);
