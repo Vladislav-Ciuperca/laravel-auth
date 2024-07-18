@@ -13,13 +13,13 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-       $technology=Technology::all();
+        $technology = Technology::all();
 
-       $data = [
-        "technologies"=> $technology,
-       ];
+        $data = [
+            "technologies" => $technology,
+        ];
 
-       return view('admin.technologies.index', $data);
+        return view('admin.technologies.index', $data);
     }
 
     /**
@@ -63,7 +63,11 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        return 'edit is oke';
+        $data = [
+            "technologies" => $technology
+        ];
+
+        return view("admin.technologies.edit", $data);
     }
 
     /**
@@ -71,7 +75,14 @@ class TechnologyController extends Controller
      */
     public function update(Request $request, Technology $technology)
     {
-        //
+        $data = $request->all();
+
+        $technology->name = $data['name'];
+        $technology->description = $data['description'];
+        $technology->icon = $data['icon'];
+        $technology->save();
+
+        return redirect()->route('admin.technologies.index');
     }
 
     /**
@@ -79,6 +90,8 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+
+        return redirect()->route('admin.technologies.index');
     }
 }
