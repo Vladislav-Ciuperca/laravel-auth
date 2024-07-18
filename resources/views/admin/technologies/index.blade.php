@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <a class="p-2 text-center" href="{{route('admin.types.create')}}">
-                <div class="btn btn-primary">Crea una nuova Tipo</div>
+            <a class="p-2 text-center" href="{{route('admin.technologies.create')}}">
+                <div class="btn btn-primary">Crea una nuova Technology</div>
             </a>
             <div class="col-12 d-flex flex-wrap">
 

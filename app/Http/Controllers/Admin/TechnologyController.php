@@ -27,7 +27,7 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        return 'create is oke';
+        return view('admin.technologies.create');
     }
 
     /**
@@ -35,7 +35,15 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newTechnology = new Technology();
+        $newTechnology->name = $data['name'];
+        $newTechnology->description = $data['description'];
+        $newTechnology->icon = $data['icon'];
+        $newTechnology->save();
+
+        return redirect()->route('admin.technologies.show', $newTechnology->id);
     }
 
     /**
@@ -43,7 +51,11 @@ class TechnologyController extends Controller
      */
     public function show(Technology $technology)
     {
-        return 'show is oke';
+        $data = [
+            "technologies" => $technology
+        ];
+
+        return view("admin.technologies.show", $data);
     }
 
     /**
