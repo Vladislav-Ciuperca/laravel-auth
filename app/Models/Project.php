@@ -28,10 +28,7 @@ class Project extends Model
         return $this->belongsTo(type::class);
     }
     // collego $questo model a $tecnologies 
-    public function tecnologies()
-    {
-        return $this->belongsToMany(tecnology::class,'project_technology');
-    }
+  
 
     public function Technology(){
         return $this -> belongsToMany(Technology::class);
