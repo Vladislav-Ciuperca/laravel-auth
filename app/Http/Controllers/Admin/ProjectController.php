@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
-use App\Models\Technology;
-use App\Models\type;
+// use App\Models\Technology;
+// use App\Models\type;
 use Illuminate\Http\Request as HttpRequest;
+
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -16,22 +18,12 @@ class ProjectController extends Controller
     public function index()
     {
         $progetti = Project::all();
-        // $type = type::all();
 
-        // dd($type);
-       
-        
-        // $type = type::all()->keyBy('id');
-        
         $data = [
             "progetti" => $progetti,
-            // "types" => $type,
         ];
 
-        // dd($tecnology);
-        
         return view('admin.projects.index', $data);
-        // dd( $prova,$progetti);
     }
 
     /**
@@ -48,6 +40,15 @@ class ProjectController extends Controller
     public function store(HttpRequest $request)
     {
 
+        if ($request->has('immagine')) {
+
+            $file = $request->file('immagine');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = time().'.'.$extension;
+            $file_path = Storage::put('uploads',$filename);
+        }
+
         $data = $request->all();
 
         $newProject = new Project();
@@ -55,6 +56,7 @@ class ProjectController extends Controller
         $newProject->descrizione = $data['descrizione'];
         $newProject->immagine = $data['immagine'];
         $newProject->save();
+
 
         return redirect()->route('admin.projects.show', $newProject->id);
     }

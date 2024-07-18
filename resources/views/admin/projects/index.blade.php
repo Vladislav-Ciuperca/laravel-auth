@@ -12,26 +12,20 @@
                                 <p class="card-text">
                                     <a href="{{ route('admin.projects.show', $progetto->id) }}">
                                         <img src="{{ $progetto->immagine }}" alt="">
+                                        <img src="{{ asset('storage/',$progetto->filename) }}" alt="">
                                     </a>
                                 </p>
 
                                 <h5 class="card-title">{{ $progetto->titolo }}</h5>
                                 <p class="descrizone card-text overflow-auto">{{ $progetto->descrizione }}</p>
                                 
-                                <p class="descrizone card-text overflow-auto">{{ $progetto->types->id}}</p>
                                 {{-- <span class="descrizone card-text overflow-auto">{{ $progetto->type->name }}</span> --}}
 
-                                {{-- @dd( $progetto->type) --}}
-                                {{-- @dd($progetto->technology) --}}
-                               {{-- @foreach ($progetto->technology as $single)
+                               
+                               @foreach ($progetto->technology as $single)
                                    <h2>{{$single->name}}</h2>
-                               @endforeach --}}
-                                {{-- <h2>{{$progetto->progetto_id}}</h2> --}}
-                                {{-- @foreach ($progetto->technologies as $technology)
-
-
-                                    <h2>ciao?></h2>
-                                @endforeach --}}
+                               @endforeach
+                        
 
                             </div>
 
