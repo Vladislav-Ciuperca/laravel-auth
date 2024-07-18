@@ -35,6 +35,7 @@ Route::middleware(['auth'])
         Route::resource('/projects', ProjectController::class);
 
         Route::resource('/types', TypeController::class);
+        Route::resource('/technologies', TechnologyController::class);
 
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     });
