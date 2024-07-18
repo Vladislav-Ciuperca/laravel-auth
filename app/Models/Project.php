@@ -15,7 +15,10 @@ class Project extends Model
     protected $fillable = [
         'titolo',
         'descrizione',
-        'immagine'
+        'immagine',
+        'name',
+        'description',
+        'icon',
     ];
 
     // collego il model del projects a quello del tipe
@@ -28,5 +31,9 @@ class Project extends Model
     public function tecnologies()
     {
         return $this->belongsToMany(tecnology::class,'project_technology');
+    }
+
+    public function Technology(){
+        return $this -> belongsToMany(Technology::class);
     }
 }

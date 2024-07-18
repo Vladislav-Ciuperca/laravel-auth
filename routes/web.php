@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController; //<---- Import del controller precedentemente creato!
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\admin\TechnologyController;
 use App\Http\Controllers\Admin\TecnologyController;
 use App\Http\Controllers\Admin\TypeController;
 
@@ -34,8 +35,6 @@ Route::middleware(['auth'])
         Route::resource('/projects', ProjectController::class);
 
         Route::resource('/types', TypeController::class);
-
-        Route::resource('/tecnologies', TecnologyController::class);
 
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     });
