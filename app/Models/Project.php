@@ -13,12 +13,19 @@ class Project extends Model
     protected $fillable = [
         'titolo',
         'descrizione',
-        'immagine'
+        'immagine',
+        'name',
+        'description',
+        'icon',
     ];
 
     // collego il model del projects a quello del tipe
     // in modo da poter richiamare il $type con la sintasi blade ($progetto->type->valore)
     public function type():BelongsTo{
         return $this ->belongsTo(type::class);
+    }
+
+    public function Technology(){
+        return $this -> belongsToMany(Technology::class);
     }
 }
