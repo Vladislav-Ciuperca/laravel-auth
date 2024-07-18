@@ -44,5 +44,6 @@ class TechnologySeeder extends Seeder
         $newTechVue->icon = 'fa-brands fa-vuejs';
 
         $newTechVue->save();
+
     }
 }

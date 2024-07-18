@@ -17,8 +17,19 @@
 
                                 <h5 class="card-title">{{ $progetto->titolo }}</h5>
                                 <p class="descrizone card-text overflow-auto">{{ $progetto->descrizione }}</p>
-                             
+
                                 <span class="descrizone card-text overflow-auto">{{ $progetto->type->name }}</span>
+
+                                {{-- @dd($progetto->technology) --}}
+                               @foreach ($progetto->technology as $single)
+                                   <h2>{{$single->name}}</h2>
+                               @endforeach
+                                {{-- <h2>{{$progetto->progetto_id}}</h2> --}}
+                                {{-- @foreach ($progetto->technologies as $technology)
+
+
+                                    <h2>ciao?></h2>
+                                @endforeach --}}
 
                             </div>
 
