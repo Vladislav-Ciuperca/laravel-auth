@@ -90,12 +90,19 @@ class ProjectController extends Controller
      */
     public function update(HttpRequest $request, Project $project)
     {
+        if ($request->has('immagine')) {
+           
+            $image_path = Storage::put('uploads', $request->immagine);
+            // dd($image_path);
+        }
+
+
         $data = $request->all();
 
 
         $project->titolo = $data['titolo'];
         $project->descrizione = $data['descrizione'];
-        $project->immagine = $data['immagine'];
+        $project->immagine = $image_path;
         $project->save();
 
         return redirect()->route('admin.projects.index');
