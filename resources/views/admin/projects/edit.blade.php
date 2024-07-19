@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-12">
 
-                <form method="POST" action="{{ route('admin.projects.update', $progetto->id), }}">
+                <form enctype="multipart/form-data" method="POST" action="{{ route('admin.projects.update', $progetto->id), }}">
                     @method('PUT')
                     @csrf
                     <div class="mb-3">

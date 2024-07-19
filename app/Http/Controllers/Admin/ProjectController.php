@@ -40,25 +40,25 @@ class ProjectController extends Controller
     public function store(HttpRequest $request)
     {
 
+        // dd ($request->all());
+
         if ($request->has('immagine')) {
-
-            $file = $request->file('immagine');
-            $extension = $file->getClientOriginalExtension();
-
-            $filename = time().'.'.$extension;
-            $file_path = Storage::put('uploads',$filename);
+           
+            $image_path = Storage::put('uploads', $request->immagine);
+            // dd($image_path);
         }
 
         $data = $request->all();
-
         $newProject = new Project();
-        $newProject->titolo = $data['titolo'];
         $newProject->descrizione = $data['descrizione'];
-        $newProject->immagine = $data['immagine'];
+        $newProject->titolo = $data['titolo'];
+        $newProject->immagine = $image_path;
+
         $newProject->save();
 
 
-        return redirect()->route('admin.projects.show', $newProject->id);
+       return redirect()->route('admin.projects.show', $newProject->id);
+        // return redirect()->route('admin.projects.index');
     }
 
     /**

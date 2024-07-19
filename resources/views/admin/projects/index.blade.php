@@ -11,21 +11,27 @@
                             <div>
                                 <p class="card-text">
                                     <a href="{{ route('admin.projects.show', $progetto->id) }}">
+
+                                        {{-- ///////////////////////// --}}
+                                        @if (Str::startsWith($progetto->immagine, 'http'))
                                         <img src="{{ $progetto->immagine }}" alt="">
-                                        <img src="{{ asset('storage/',$progetto->filename) }}" alt="">
+                                        @else
+                                        <img src="{{ asset('storage/' . $progetto->immagine) }}" alt="">
+                                        @endif
+                                        {{-- ///////////////////////// --}}
                                     </a>
                                 </p>
 
                                 <h5 class="card-title">{{ $progetto->titolo }}</h5>
                                 <p class="descrizone card-text overflow-auto">{{ $progetto->descrizione }}</p>
-                                
-                                {{-- <span class="descrizone card-text overflow-auto">{{ $progetto->type->name }}</span> --}}
 
-                               
-                               @foreach ($progetto->technology as $single)
-                                   <h2>{{$single->name}}</h2>
-                               @endforeach
-                        
+                                {{-- <span class="descrizone card-text overflow-a uto">{{ $progetto->type->name }}</span> --}}
+
+
+                                @foreach ($progetto->technology as $single)
+                                    <h2>{{ $single->name }}</h2>
+                                @endforeach
+
 
                             </div>
 
