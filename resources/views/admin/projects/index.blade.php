@@ -4,32 +4,34 @@
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex flex-wrap">
-                @foreach ($progetti as $progetto)//
+                @foreach ($progetti as $progetto)
                     <div class="card my-4 mx-2" style="width: 18rem;">
                         <div class="card-body d-flex flex-column justify-content-between">
 
                             <div>
                                 <p class="card-text">
                                     <a href="{{ route('admin.projects.show', $progetto->id) }}">
-                                        <img src="{{ $progetto->immagine }}" alt="">
+
+                                        {{-- ///////////////////////// --}}
+                                        @if (Str::startsWith($progetto->immagine, 'http'))
+                                            <img src="{{ $progetto->immagine }}" alt="">
+                                        @else
+                                            <img src="{{ asset('storage/' . $progetto->immagine) }}" alt="">
+                                        @endif
+                                        {{-- ///////////////////////// --}}
+
                                     </a>
                                 </p>
 
                                 <h5 class="card-title">{{ $progetto->titolo }}</h5>
                                 <p class="descrizone card-text overflow-auto">{{ $progetto->descrizione }}</p>
 
-                                <span class="descrizone card-text overflow-auto">{{ $progetto->types->name }}</span>
+                                <span class="descrizone card-text overflow-auto">{{ $progetto->type->name }}</span>
 
-                                {{-- @dd($progetto->technology) --}}
-                               @foreach ($progetto->technology as $single)
-                                   <h2>{{$single->name}}</h2>
-                               @endforeach
-                                {{-- <h2>{{$progetto->progetto_id}}</h2> --}}
-                                {{-- @foreach ($progetto->technologies as $technology)
+                                @foreach ($progetto->technology as $single)
+                                    <h2>{{ $single->name }}</h2>
+                                @endforeach
 
-
-                                    <h2>ciao?></h2>
-                                @endforeach --}}
 
                             </div>
 
@@ -47,9 +49,15 @@
 
                             </div>
 
+
+                            {{-- {{$project->links}} --}}
+
                         </div>
                     </div>
                 @endforeach
+
+                    {{$progetti->links()}}
+
             </div>
         </div>
     </div>

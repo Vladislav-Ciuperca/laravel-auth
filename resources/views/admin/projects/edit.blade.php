@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-12">
 
-                <form method="POST" action="{{ route('admin.projects.update', $progetto->id), }}">
+                <form enctype="multipart/form-data" method="POST" action="{{ route('admin.projects.update', $progetto->id), }}">
                     @method('PUT')
                     @csrf
                     <div class="mb-3">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Percorso immagione</label>
-                        <input type="text" class="form-control" name="immagine" value="{{$progetto->immagine}}" required>
+                        <input type="file" class="form-control" name="immagine" value="{{$progetto->immagine}}" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
