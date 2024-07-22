@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\Project;
+use App\Http\Controllers\Api\ProjectController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('projects',function(){
+// specificoi la rotta chje risponde a api/projects
+Route::get('projects',[ProjectController::class, 'index']);
+
+
+
+
+    // qua il codice senza il contrroller della API
+  
+// });
+// Route::get('projects',function(){
 
     // metodo scorciatoia che usa la funzione di laravel
     //   per convertire in json direttamente
@@ -29,10 +39,10 @@ Route::get('projects',function(){
 
 // metodo che usa paginate con orderby(a qui serve un argomento
 //  tipo "id")
-    return response()->json([
-        'success'=> true,
-        'projects'=> Project::orderByDesc('id')->paginate()
-    ]);
+//     return response()->json([
+//         'success'=> true,
+//         'projects'=> Project::orderByDesc('id')->paginate()
+//     ]);
 
 
-});
+// });

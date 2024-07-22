@@ -3,6 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="pt-2 col-6 offset-3">
+                {{$progetti->links('pagination::bootstrap-5')}}
+            </div>
             <div class="col-12 d-flex flex-wrap">
                 @foreach ($progetti as $progetto)
                     <div class="card my-4 mx-2" style="width: 18rem;">
@@ -27,7 +30,7 @@
                                 <p class="descrizone card-text overflow-auto">{{ $progetto->descrizione }}</p>
 
                                 {{-- <span class="descrizone card-text overflow-a uto">{{ $progetto->types->name }}</span> --}}
-                                <span class="descrizone card-text overflow-a uto">{{ $progetto->type->name}}</span>
+                                <span class="descrizone card-text overflow-a uto"> {{ optional($progetto->type)->name }}</span>
 
                                 {{-- @dd($progetto->technology) --}}
                                @foreach ($progetto->technology as $single)
@@ -60,7 +63,9 @@
                     </div>
                 @endforeach
 
-                    {{$progetti->links()}}
+                <div class="pt-2 col-6 offset-3">
+                    {{$progetti->links('pagination::bootstrap-5')}}
+                </div>
 
                 </h2>
 
