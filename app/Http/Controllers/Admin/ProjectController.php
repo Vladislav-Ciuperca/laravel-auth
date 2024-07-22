@@ -44,6 +44,14 @@ class ProjectController extends Controller
     public function store(HttpRequest $request)
     {
 
+        // dd ($request->all());
+
+        if ($request->has('immagine')) {
+           
+            $image_path = Storage::put('uploads', $request->immagine);
+           
+        }
+
         $data = $request->all();
 
         $newProject = new Project();
