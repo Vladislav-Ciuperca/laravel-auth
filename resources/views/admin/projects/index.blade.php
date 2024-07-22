@@ -11,27 +11,25 @@
                             <div>
                                 <p class="card-text">
                                     <a href="{{ route('admin.projects.show', $progetto->id) }}">
-
-                                        {{-- ///////////////////////// --}}
-                                        @if (Str::startsWith($progetto->immagine, 'http'))
-                                            <img src="{{ $progetto->immagine }}" alt="">
-                                        @else
-                                            <img src="{{ asset('storage/' . $progetto->immagine) }}" alt="">
-                                        @endif
-                                        {{-- ///////////////////////// --}}
-
+                                        <img src="{{ $progetto->immagine }}" alt="">
                                     </a>
                                 </p>
 
                                 <h5 class="card-title">{{ $progetto->titolo }}</h5>
                                 <p class="descrizone card-text overflow-auto">{{ $progetto->descrizione }}</p>
 
-                                <span class="descrizone card-text overflow-auto">{{ $progetto->type->name }}</span>
+                                <span class="descrizone card-text overflow-auto">{{$progetto->type->name }}</span>
 
-                                @foreach ($progetto->technology as $single)
-                                    <h2>{{ $single->name }}</h2>
-                                @endforeach
+                                {{-- @dd($progetto->technology) --}}
+                               @foreach ($progetto->technology as $single)
+                                   <h2>{{$single->name}}</h2>
+                               @endforeach
+                                {{-- <h2>{{$progetto->progetto_id}}</h2> --}}
+                                {{-- @foreach ($progetto->technologies as $technology)
 
+
+                                    <h2>ciao?></h2>
+                                @endforeach --}}
 
                             </div>
 
@@ -49,14 +47,11 @@
 
                             </div>
 
-
-                            {{-- {{$project->links}} --}}
-
                         </div>
                     </div>
                 @endforeach
 
-                    {{$progetti->links()}}
+                {{-- {{$progetto->links(' agination::bootstrap-5')}} --}}
 
             </div>
         </div>
