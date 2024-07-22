@@ -17,7 +17,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $progetti = Project::all();
+        // $progetti = Project::all();
+
+        $progetti = Project::orderByDesc('id')->paginate();
 
         $data = [
             "progetti" => $progetti,
