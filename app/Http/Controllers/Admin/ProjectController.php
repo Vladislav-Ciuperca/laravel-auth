@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
-// use App\Models\Technology;
-// use App\Models\type;
+
 use Illuminate\Http\Request as HttpRequest;
 
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        // $progetti = Project::all();
+        
 
         $progetti = Project::orderByDesc('id')->paginate();
 
