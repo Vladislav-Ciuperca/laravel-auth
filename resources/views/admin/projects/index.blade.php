@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-12 d-flex flex-wrap">
                 @foreach ($progetti as $progetto)
+                    
                     <div class="card my-4 mx-2" style="width: 18rem;">
                         <div class="card-body d-flex flex-column justify-content-between">
 
@@ -14,11 +15,12 @@
 
                                         {{-- ///////////////////////// --}}
                                         @if (Str::startsWith($progetto->immagine, 'http'))
-                                        <img src="{{ $progetto->immagine }}" alt="">
+                                            <img src="{{ $progetto->immagine }}" alt="">
                                         @else
-                                        <img src="{{ asset('storage/' . $progetto->immagine) }}" alt="">
+                                            <img src="{{ asset('storage/' . $progetto->immagine) }}" alt="">
                                         @endif
                                         {{-- ///////////////////////// --}}
+
                                     </a>
                                 </p>
 
@@ -49,9 +51,15 @@
 
                             </div>
 
+
+                            {{-- {{$project->links}} --}}
+
                         </div>
                     </div>
                 @endforeach
+
+                    {{$progetti->links()}}
+
             </div>
         </div>
     </div>
