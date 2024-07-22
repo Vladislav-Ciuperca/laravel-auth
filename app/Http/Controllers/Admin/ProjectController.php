@@ -15,15 +15,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $progetti = Project::all();
-        $type = type::all();
-       
-        
-        // $type = type::all()->keyBy('id');
-        
+        // $progetti = Project::all();
+
+        $progetti = Project::orderByDesc('id')->paginate();
+
         $data = [
             "progetti" => $progetti,
-            "types" => $type,
+            // "types" => $type,
         ];
 
         // dd($tecnology);

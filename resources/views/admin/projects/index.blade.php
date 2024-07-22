@@ -18,7 +18,7 @@
                                 <h5 class="card-title">{{ $progetto->titolo }}</h5>
                                 <p class="descrizone card-text overflow-auto">{{ $progetto->descrizione }}</p>
 
-                                <span class="descrizone card-text overflow-auto">{{$progetto->type->name }}</span>
+                                <span class="descrizone card-text overflow-a uto">{{ $progetto->type->name }}</span>
 
                                 {{-- @dd($progetto->technology) --}}
                                @foreach ($progetto->technology as $single)
@@ -51,7 +51,9 @@
                     </div>
                 @endforeach
 
-                {{-- {{$progetto->links(' agination::bootstrap-5')}} --}}
+                    {{$progetti->links()}}
+
+                </h2>
 
             </div>
         </div>
