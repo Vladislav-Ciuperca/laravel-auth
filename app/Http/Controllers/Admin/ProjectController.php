@@ -7,6 +7,8 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\type;
 use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProjectController extends Controller
 {
@@ -57,7 +59,7 @@ class ProjectController extends Controller
         $newProject = new Project();
         $newProject->titolo = $data['titolo'];
         $newProject->descrizione = $data['descrizione'];
-        $newProject->immagine = $data['immagine'];
+        $newProject->immagine = $image_path;
         $newProject->save();
 
         return redirect()->route('admin.projects.show', $newProject->id);
@@ -92,12 +94,19 @@ class ProjectController extends Controller
      */
     public function update(HttpRequest $request, Project $project)
     {
+
+        if ($request->has('immagine')) {
+           
+            $image_path = Storage::put('uploads', $request->immagine);
+           
+        }
+
         $data = $request->all();
 
 
         $project->titolo = $data['titolo'];
         $project->descrizione = $data['descrizione'];
-        $project->immagine = $data['immagine'];
+        $project->immagine = $image_path;
         $project->save();
 
         return redirect()->route('admin.projects.index');
