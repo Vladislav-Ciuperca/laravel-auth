@@ -24,6 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // specificoi la rotta chje risponde a api/projects
 Route::get('projects',[ProjectController::class, 'index']);
+Route::get('projects/latest',[ProjectController::class, 'latest']);
+Route::get('projects/{project}',[ProjectController::class, 'show']);
 
 
 
