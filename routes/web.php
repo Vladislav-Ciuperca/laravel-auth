@@ -25,11 +25,25 @@ Route::get('/', function () {
 });
 
 
+
+
+
+Route::get('/mailable',function () {
+
+    $lead = App\Models\invoice::find(1);
+
+    return new App\Models\invoicePaid($invoice);
+
+});
+
+
+
+
 Route::middleware(['auth'])
     ->prefix('admin') //definisce il prefisso "admin/" per le rotte di questo gruppo
     ->name('admin.') //definisce il pattern con cui generare i nomi delle rotte cioè "admin.qualcosa"
     ->group(function () {
-
+// gh
         //Siamo nel gruppo quindi:
         // - il percorso "/" diventa "admin/"
         // - il nome della rotta ->name("dashboard") diventa ->name("admin.dashboard")
